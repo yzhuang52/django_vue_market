@@ -42,7 +42,7 @@ export default {
 }, 
   mounted() {
     this.getLatestProducts()
-    document.title = 'Home' | 'Django Markets'
+    document.title = 'Home | Django Markets'
   },
   methods: {
     getLatestProducts() {
