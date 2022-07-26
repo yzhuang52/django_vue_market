@@ -18,6 +18,11 @@ export default createStore({
       }else{
         localStorage.setItem('cart', JSON.stringify(state.cart))
       }
+
+      if(localStorage.getItem('token')) {
+        state.token = localStorage.getItem('token')
+        state.isAuthenticated = true
+      }
     },
     addToCart(state, item){
       const exists = state.cart.items.filter(i => i.product_id === item.product_id)
@@ -30,6 +35,14 @@ export default createStore({
     },
     setIsLoading(state, status) {
       state.isLoading = status
+    },
+    setToken(state, token) {
+      state.token = token
+      state.isAuthenticated = true 
+    },
+    clearCart(state) {
+      state.cart = {items: []}
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     }
   },
   actions: {
